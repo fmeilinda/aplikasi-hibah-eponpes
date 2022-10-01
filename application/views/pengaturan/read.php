@@ -1,0 +1,70 @@
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card rounded">
+                    <div class="card-header">
+                        <strong class="card-title"><?= $judul; ?></strong>
+                    </div>
+                    <div class="card-body">
+                        <?php if ($this->session->has_userdata('success')) : ?>
+                            <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                                <span class="badge badge-pill badge-success">Success</span>
+                                <?= $this->session->flashdata('success'); ?>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                        <?php endif; ?>
+                        <table id="bootstrap-data-table-export" class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Foto Kepala pp</th>
+                                    <th>Kepala Ponpes</th>
+                                    <th>no Hp Ponpes</th>
+                                    <th>Email Ponpes</th>
+                                    <th>Pendaftaran dibuka </th>
+                                    <th>Batas pendaftaran siswa</th>
+                                    <th>periode tahun ajar </th>
+                                    <th>no. whats app</th>
+                                    <th>Fasilitas ponpes</th>
+                                    <th>Link instagram ponpes</th>
+                                    <th>Link facebook ponpes</th>
+                                    <th>Link youtube ponpes</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1;
+                                foreach ($data as $row) { ?>
+                                    <tr>
+                                        <td><?php echo $no ?></td>
+                                        <td><img src="<?php echo base_url(); ?>assets/images/upload/<?php echo ucwords($row['image']); ?>" height="100px" width="250px"></td>
+                                        <td><?php echo ucwords($row['nama_kepala_ponpes']); ?></td>
+                                        <td><?php echo ucwords($row['no_hp']); ?></td>
+                                        <td><?php echo ucwords($row['email']); ?></td>
+                                        <td><?php echo ucwords($row['pendaftaran_awal']); ?></td>
+                                        <td><?php echo ucwords($row['batas_akhir']); ?></td>
+                                        <td><?php echo ucwords($row['periode']); ?></td>
+                                        <td><?php echo ucwords($row['whatsapp']); ?></td>
+                                        <td><?php echo ucwords($row['fasilitas']); ?></td>
+                                        <td><?php echo ucwords($row['instagram']); ?></td>
+                                        <td><?php echo ucwords($row['facebook']); ?></td>
+                                        <td><?php echo ucwords($row['youtube']); ?></td>
+                                        <td>
+                                            <a class="btn btn-sm btn-secondary rounded m-1" href="<?= base_url('pengaturan/edit/' . $row['id_pengaturan']) ?>"> <i class="fa fa-edit"></i> Edit </a>
+                                        </td>
+                                        </td>
+                                    </tr>
+                                <?php $no++;
+                                }  ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
